@@ -1,5 +1,33 @@
 ---
-- name: install and start apache
+- name: apply common config to all hosts
+  hosts: all
+  remote_user: vagrant
+  become: yes
+
+  roles:
+  - common
+
+- name: apply db config
+  hosts: dbservers
+  remote_user: vagrant
+  become: yes
+
+  roles:
+  - mariadb
+
+- name: apply apache and web roles
   hosts: webservers
   remote_user: vagrant
   become: yes
+
+  roles:
+  - apache
+  - web
+
+- name: apply the lb config
+  hosts: lbservers
+  remote_user: vagrant
+  become: yes
+
+  roles:
+  - haproxy
