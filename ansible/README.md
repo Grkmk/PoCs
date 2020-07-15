@@ -24,3 +24,6 @@ service: service should be running
 template: render a config file from a template
 get_url: fetch an archive file from a URL
 git: clone a source code repo
+
+#### roles
+`$ ansible-galaxy init <folder name>`
