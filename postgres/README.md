@@ -18,6 +18,7 @@ sh into db from terminal
 sh into db from pg shell
 `$ \c [dbname]`
 
+###### table ops
 create table
 ```
 CREATE TABLE table_name (
@@ -25,36 +26,57 @@ CREATE TABLE table_name (
   ...
 )
 ```
+delete table
+`# drop table [tablename];`
+
+alter table
+`# ALTER TABLE [tablename] [alteration];`
+add constraint
+`# ALTER TABLE [tablename] ADD [label - opt] [constraint] ([column]);`
+delete constraint
+`# ALTER TABLE [tablename] DROP CONSTRAINT [label];`
+check constraint -> add conditional constraints
+`# ALTER TABLE [tablename] ADD CONSTRAINT [label - opt] CHECK [condition];`
 
 insert doc
-`# INSERT INTO person (field1, field2,..)`
+`# INSERT INTO [tablename] (field1, field2,..)`
 `# VALUES (val1, val2,..);`
+delete doc
+`# DELETE FROM [tablename] WHERE [condition];`
+update doc
+`# UPDATE [tablename] SET [column] = [value] WHERE [condition];`
+error handling
+`# ... ON CONFLICT ([column]) [action - i.e. DO NOTHING];`
 
 ###### queries
 get values
-`# SELECT [selector] FROM [table];`
+`# SELECT [column] FROM [table];`
 order
-`# ...  ORDER BY [selector] [asc || desc];`
+`# ...  ORDER BY [column] [asc || desc];`
 get distinct values
 `# SELECT DISTINCT ... ;`
 where
-`# ... WHERE [clause];`
+`# ... WHERE [condition];`
 where + and + or + in
-`# ... WHERE [clause1] AND [clause2] OR [clause3] IN ([array]);`
+`# ... WHERE [condition1] AND [condition2] OR [condition3] IN ([array]);`
 where + between
 `# ... WHERE BETWEEN [val1] AND [val2];`
 where + like (ILIKE for case insensitive)
-`# ... WHERE [selector] LIKE [pattern];`
+`# ... WHERE [column] LIKE [pattern];`
 limit
 `# ... LIMIT [int];`
 `# ... LIMIT [int] OFFSET [int];`
 `# ... OFFSET [int] FETCH [specs, i.e. FIRST 5 ROW ONLY];`
 group
-`# SELECT [selector], COUNT(*) GROUP BY [selector];`
+`# SELECT [column], COUNT(*) GROUP BY [column];`
 group + having
-`# ... HAVING [clause] GROUP BY [selector];`
+`# ... HAVING [condition] GROUP BY [column];`
 common aggregate functions
-`COUNT(), MAX(), MIN(), AVG(), ROUND(), SUM()`
+`COUNT(), MAX(), MIN(), AVG(), ROUND(), SUM(), NOW()`
+coalesce -> replace value
+`COALESCE([column], [replacement])`
+age -> return age
+`AGE([start], [end])`
 operators
 ```
 = equals
@@ -62,3 +84,7 @@ operators
 <= lte
 <> not equal
 ```
+alias
+`# ... [column] AS [alias] ...;`
+casting
+`[value]::[castobject]`
