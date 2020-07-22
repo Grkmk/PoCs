@@ -1,3 +1,11 @@
 .DS_Store
 .prettierignore
 postgres/db
+*/node_modules
+
+server-boilerplate/.idea/
+server-boilerplate/.vscode/
+server-boilerplate/node_modules/
+server-boilerplate/build/
+server-boilerplate/tmp/
+server-boilerplate/temp/
