@@ -37,6 +37,8 @@ delete constraint
 `# ALTER TABLE [tablename] DROP CONSTRAINT [label];`
 check constraint -> add conditional constraints
 `# ALTER TABLE [tablename] ADD CONSTRAINT [label - opt] CHECK [condition];`
+restart sequence
+`# ALTER SEQUENCE [sequence] RESTART WITH [int]`
 
 insert doc
 `# INSERT INTO [tablename] (field1, field2,..)`
@@ -46,11 +48,11 @@ delete doc
 update doc
 `# UPDATE [tablename] SET [column] = [value] WHERE [condition];`
 error handling
-`# ... ON CONFLICT ([column]) [action - i.e. DO NOTHING];`
+`# ... ON CONFLICT ([column]) DO [action - i.e. NOTHING];`
 
 ###### queries
 get values
-`# SELECT [column] FROM [table];`
+`# SELECT [column] FROM [tablename];`
 order
 `# ...  ORDER BY [column] [asc || desc];`
 get distinct values
@@ -88,3 +90,26 @@ alias
 `# ... [column] AS [alias] ...;`
 casting
 `[value]::[castobject]`
+
+###### populate
+only intersecting
+```
+# SELECT * FROM [tablename1]
+# JOIN [tablename2] ON [tablename1].[column] = [tablename2].[column];
+```
+left join -> will return docs with null refs also
+```
+# SELECT * FROM [tablename1]
+# LEFT JOIN [tablename2] ON [tablename1].[column] = [tablename2].[column];
+```
+with using keyword
+`# SELECT * FROM [tablename1] LEFT JOIN [tablename2] USING ([column]);`
+
+###### export
+`# \copy (...) TO '[directory + file]' DELIMITER ',' [filetype] HEADER;`
+
+###### extensions
+list
+`# SELECT * FROM pg_available_extensions;`
+add
+`# CREATE EXTENSION IF NOT EXISTS '[extension]';`
