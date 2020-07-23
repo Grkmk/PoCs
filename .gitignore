@@ -2,6 +2,7 @@
 .prettierignore
 server-boilerplate/db
 */node_modules
+*/.env
 
 server-boilerplate/.idea/
 server-boilerplate/.vscode/

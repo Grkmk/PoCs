@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "esModuleInterop": true,
     "module": "CommonJS",
     "moduleResolution": "node",
     "lib": ["ES6", "DOM", "ES2017", "ESNext.AsyncIterable"],
@@ -15,7 +16,7 @@
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    // "noUnusedParameters": true,
     "removeComments": true,
     "strictNullChecks": true,
     "strictFunctionTypes": true
