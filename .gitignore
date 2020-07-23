@@ -1,6 +1,6 @@
 .DS_Store
 .prettierignore
-postgres/db
+server-boilerplate/db
 */node_modules
 
 server-boilerplate/.idea/
